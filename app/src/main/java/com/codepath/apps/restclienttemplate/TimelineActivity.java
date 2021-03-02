@@ -19,8 +19,10 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
+        Log.d(TAG, "onCreate: ");
         client = TwitterApp.getRestClient(this);
         populateHomeTimeline();
+        
     }
 
     private void populateHomeTimeline() {
