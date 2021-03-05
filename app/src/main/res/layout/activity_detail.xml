@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="@color/cardview_light_background">
+    android:layout_marginBottom="5dp"
+    android:background="@color/cardview_light_background"
+    >
+
     <ImageView
         android:id="@+id/ivProfileDET"
         android:layout_width="75dp"
@@ -47,7 +50,7 @@
         android:id="@+id/ibCommentDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBodyDET"
+        android:layout_below="@+id/ivMediaDetailed"
         android:layout_toEndOf="@+id/ivProfileDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
@@ -60,7 +63,7 @@
         android:id="@+id/ibRetweetDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBodyDET"
+        android:layout_below="@+id/ivMediaDetailed"
         android:layout_toEndOf="@+id/ibCommentDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
@@ -73,7 +76,7 @@
         android:id="@+id/ibLikeDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBodyDET"
+        android:layout_below="@+id/ivMediaDetailed"
         android:layout_toEndOf="@+id/ibRetweetDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
@@ -86,7 +89,7 @@
         android:id="@+id/ibArchiveDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBodyDET"
+        android:layout_below="@+id/ivMediaDetailed"
         android:layout_toEndOf="@+id/ibLikeDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
@@ -95,6 +98,16 @@
         android:scaleX="1.25"
         android:scaleY="1.25"
         />
+
+    <ImageView
+        android:id="@+id/ivMediaDetailed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_below="@id/tvBodyDET"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        tools:srcCompat="@tools:sample/avatars[1]" />
 
 
 </RelativeLayout>

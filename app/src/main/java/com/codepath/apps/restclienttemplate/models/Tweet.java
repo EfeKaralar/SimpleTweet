@@ -36,7 +36,9 @@ public class Tweet {
                 tweet.previewUrl = tweet.media.getJSONObject(0).getString("media_url_https");
                 Log.d(TAG, tweet.body + "has a media url:  " + tweet.previewUrl);
             }
+            else{tweet.previewUrl = null;}
         }
+        else{tweet.previewUrl = null;}
 
 
         //tweet.imageType = jsonObject.getString("type");

@@ -21,6 +21,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvBody;
     TextView tvScreenName;
     TextView tvDate;
+    ImageView ivMedia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +32,21 @@ public class DetailActivity extends AppCompatActivity {
         tvBody = findViewById(R.id.tvBodyDET);
         tvScreenName = findViewById(R.id.tvScreenNameDET);
         tvDate = findViewById(R.id.tvDateDET);
+        ivMedia = findViewById(R.id.ivMediaDetailed);
 
         String screenName = getIntent().getStringExtra("screen_name");
         String body = getIntent().getStringExtra("body");
         String profileImageUrl = getIntent().getStringExtra("profile_image_url");
         String createdAt = getIntent().getStringExtra("date");
+        String imageUrl = getIntent().getStringExtra("media_url");
 
         tvScreenName.setText(screenName);
         tvBody.setText(body);
         tvDate.setText(getRelativeTimeAgo(createdAt));
         Glide.with(this).load(profileImageUrl).into(ivProfileImage);
-
+        if(imageUrl != null){
+            Glide.with(this).load(imageUrl).into(ivMedia);
+        }
     }
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     public String getRelativeTimeAgo(String rawJsonDate) {

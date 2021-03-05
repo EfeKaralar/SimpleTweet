@@ -105,6 +105,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                     i.putExtra("body", tweet.body);
                     i.putExtra("profile_image_url", tweet.user.profileImageUrl);
                     i.putExtra( "date", tweet.createdAt);
+                    i.putExtra("media_url", tweet.previewUrl);
                     context.startActivity(i);
                 }
             });
