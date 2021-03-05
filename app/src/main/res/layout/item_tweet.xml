@@ -89,11 +89,12 @@
 
     <ImageView
         android:id="@+id/ivPreview"
-        android:layout_width="200dp"
-        android:layout_height="105dp"
-        android:layout_toEndOf="@+id/ivProfile"
-        android:layout_marginStart="35dp"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
         android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/ivProfile"
+        android:maxHeight="150dp"
+        android:maxWidth="300dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 

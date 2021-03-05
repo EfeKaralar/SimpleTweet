@@ -90,7 +90,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
-            //Glide.with(context).load(tweet.previewUrl).into(ivPreview);
+            if (!(tweet.previewUrl == null)){
+                ivPreview.getLayoutParams().height = ivPreview.getMaxHeight();
+                ivPreview.getLayoutParams().width = ivPreview.getMaxWidth();
+                Glide.with(context).load(tweet.previewUrl).into(ivPreview);
+            }
             tvDate.setText(getRelativeTimeAgo(tweet.createdAt));
 
             container.setOnClickListener(new View.OnClickListener() {
