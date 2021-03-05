@@ -1,12 +1,14 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.text.format.DateUtils;
+import android.content.Intent;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -71,6 +73,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvBody;
         TextView tvScreenName;
         TextView tvDate;
+        ImageView ivPreview;
+        RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -78,14 +82,30 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvDate = itemView.findViewById(R.id.tvDate);
+            ivPreview = itemView.findViewById(R.id.ivPreview);
+            container = itemView.findViewById(R.id.rlTweet);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            //Glide.with(context).load(tweet.previewUrl).into(ivPreview);
             tvDate.setText(getRelativeTimeAgo(tweet.createdAt));
+
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("screen_name", tweet.user.screenName);
+                    i.putExtra("body", tweet.body);
+                    i.putExtra("profile_image_url", tweet.user.profileImageUrl);
+                    i.putExtra( "date", tweet.createdAt);
+                    context.startActivity(i);
+                }
+            });
         }
+
     }
 
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");

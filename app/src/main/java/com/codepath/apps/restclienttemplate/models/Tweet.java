@@ -13,6 +13,8 @@ public class Tweet {
     public String body;
     public String createdAt;
     public long id;
+    public String imageType;
+    public String previewUrl;
     public User user;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
@@ -20,6 +22,8 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
+        //tweet.imageType = jsonObject.getString("type");
+        //tweet.previewUrl = jsonObject.getString("preview_image_url");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         return tweet;
     }

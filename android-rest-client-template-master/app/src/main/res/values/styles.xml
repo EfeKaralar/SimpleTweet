@@ -9,9 +9,8 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="colorPrimary">@color/twitter_blue</item>
     </style>
 
 </resources>

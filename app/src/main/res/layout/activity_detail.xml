@@ -2,41 +2,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlTweet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@color/cardview_light_background">
-
     <ImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/ivProfileDET"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tvScreenNameDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/ivProfile"
+        android:layout_marginStart="15dp"
+        android:textSize="24dp"
+        android:layout_toEndOf="@+id/ivProfileDET"
         tools:text="alfefe_" />
 
     <TextView
-        android:id="@+id/tvBody"
+        android:id="@+id/tvBodyDET"
+        android:textSize="14dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvScreenName"
+        android:layout_below="@+id/tvScreenNameDET"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/ivProfile"
+        android:layout_toEndOf="@+id/ivProfileDET"
         tools:text="This is my first ever tweet. https://youtube.com"
         android:autoLink="all"
         android:linksClickable="true"/>
 
     <TextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tvDateDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -44,57 +44,57 @@
         tools:text="31 minutes ago" />
 
     <ImageButton
-        android:id="@+id/ibComment"
+        android:id="@+id/ibCommentDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPreview"
-        android:layout_toEndOf="@+id/ivProfile"
+        android:layout_below="@+id/tvBodyDET"
+        android:layout_toEndOf="@+id/ivProfileDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
         app:srcCompat="@drawable/ic_baseline_reply_24"
-
+        android:layout_marginStart="15dp"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
         />
     <ImageButton
-        android:id="@+id/ibRetweet"
+        android:id="@+id/ibRetweetDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPreview"
-        android:layout_toEndOf="@+id/ibComment"
+        android:layout_below="@+id/tvBodyDET"
+        android:layout_toEndOf="@+id/ibCommentDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
         app:srcCompat="@drawable/ic_vector_retweet"
         android:layout_marginStart="45dp"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
         />
     <ImageButton
-        android:id="@+id/ibLike"
+        android:id="@+id/ibLikeDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPreview"
-        android:layout_toEndOf="@+id/ibRetweet"
+        android:layout_below="@+id/tvBodyDET"
+        android:layout_toEndOf="@+id/ibRetweetDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
         app:srcCompat="@drawable/ic_vector_heart"
         android:layout_marginStart="45dp"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
         />
     <ImageButton
-        android:id="@+id/ibArchive"
+        android:id="@+id/ibArchiveDET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPreview"
-        android:layout_toEndOf="@+id/ibLike"
+        android:layout_below="@+id/tvBodyDET"
+        android:layout_toEndOf="@+id/ibLikeDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
         app:srcCompat="@drawable/ic_vector_messages"
-        android:layout_marginStart="45dp"/>
-
-    <ImageView
-        android:id="@+id/ivPreview"
-        android:layout_width="200dp"
-        android:layout_height="105dp"
-        android:layout_toEndOf="@+id/ivProfile"
-        android:layout_marginStart="35dp"
-        android:layout_below="@+id/tvBody"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_marginStart="45dp"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        />
 
 
 </RelativeLayout>
