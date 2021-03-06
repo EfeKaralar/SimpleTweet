@@ -93,7 +93,7 @@
         android:layout_toEndOf="@+id/ibLikeDET"
         android:tint="@color/light_gray"
         android:background="@color/cardview_light_background"
-        app:srcCompat="@drawable/ic_vector_messages"
+        app:srcCompat="@drawable/ic_vector_messages_selector"
         android:layout_marginStart="45dp"
         android:scaleX="1.25"
         android:scaleY="1.25"
