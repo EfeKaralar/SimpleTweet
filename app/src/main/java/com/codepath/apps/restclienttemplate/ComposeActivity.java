@@ -93,9 +93,9 @@ public class ComposeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int charCount = s.length();
+                int charCount = 280 - s.length();
                 tvCharCount.setText(String.valueOf(charCount) + "/280");
-                if(charCount > 280){
+                if(charCount < 0){
                     tvCharCount.setTextColor(Color.RED);
                     btnTweet.setEnabled(false);
                 }
