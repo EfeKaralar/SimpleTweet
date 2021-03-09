@@ -3,11 +3,15 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -21,9 +25,11 @@ import okhttp3.Headers;
 public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
-    int MAX_TWEET_CHARACTER_COUNT = 140;
+    int MAX_TWEET_CHARACTER_COUNT = 280;
     EditText etCompose;
+    TextView tvCharCount;
     Button btnTweet;
+    int colorOfTextView;
 
     TwitterClient client;
 
@@ -36,6 +42,8 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        tvCharCount = findViewById(R.id.tvCharCount);
+        colorOfTextView = tvCharCount.getTextColors().getDefaultColor();
 
         // Set a click listener on the button
         btnTweet.setOnClickListener(new View.OnClickListener() {
@@ -78,5 +86,27 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
+        etCompose.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int charCount = s.length();
+                tvCharCount.setText(String.valueOf(charCount) + "/280");
+                if(charCount > 280){
+                    tvCharCount.setTextColor(Color.RED);
+                    btnTweet.setEnabled(false);
+                }
+                else{
+                    tvCharCount.setTextColor(colorOfTextView);
+                    btnTweet.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {            }
+        });
     }
 }
