@@ -8,12 +8,17 @@ import androidx.room.PrimaryKey;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 //@Entity
 public class User {
     public String screenName;
     public String name;
     public String profileImageUrl;
+
+    // empty constructor needed for parcelable
+    public User() {}
 
     public static User fromJson(JSONObject jsonObject) throws JSONException {
         User user = new User();

@@ -11,16 +11,19 @@ import androidx.room.PrimaryKey;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 //@Entity(foreignKeys = @ForeignKey(entity=User.class, parentColumns = "id", childColumns = "screenName"))
 public class Tweet {
 
     public User user;
-    public JSONObject entities;
-    public JSONArray media;
+
+    // empty constructor needed for parcelable
+    public Tweet() {}
 
     //@ColumnInfo
     //@PrimaryKey(autoGenerate = true)
@@ -48,21 +51,16 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
-        if (jsonObject.has("extended_entities")){
-            tweet.entities = jsonObject.getJSONObject("extended_entities");
-            if (tweet.entities.has("media")) {
-                tweet.media = tweet.entities.getJSONArray("media");
-                tweet.previewUrl = tweet.media.getJSONObject(0).getString("media_url_https");
-                Log.d(TAG, tweet.body + "has a media url:  " + tweet.previewUrl);
-            }
-            else{tweet.previewUrl = null;}
-        }
-        else{tweet.previewUrl = null;}
 
 
         //tweet.imageType = jsonObject.getString("type");
         //tweet.previewUrl = jsonObject.getString("preview_image_url");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        if (jsonObject.has("extended_entities")) {
+            tweet.previewUrl = jsonObject.getJSONObject("extended_entities").getJSONArray("media").getJSONObject(0).getString("media_url_https");
+            Log.d(TAG, "fromJson: " + tweet.previewUrl);
+        }
+        else {tweet.previewUrl = null;}
         tweet.screenName = tweet.user.screenName;
         return tweet;
     }

@@ -91,6 +91,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
             if (!(tweet.previewUrl == null)){
+                Log.d(TAG, "tweet.previewUrl is not null for " + tweet.body);
                 ivPreview.getLayoutParams().height = ivPreview.getMaxHeight();
                 ivPreview.getLayoutParams().width = ivPreview.getMaxWidth();
                 Glide.with(context).load(tweet.previewUrl).into(ivPreview);
