@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.json.JSONArray;
@@ -17,32 +18,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Parcel
-//@Entity(foreignKeys = @ForeignKey(entity=User.class, parentColumns = "id", childColumns = "screenName"))
+@Entity(foreignKeys = @ForeignKey(entity=User.class, parentColumns = "id", childColumns = "userId"))
 public class Tweet {
-
-    public User user;
 
     // empty constructor needed for parcelable
     public Tweet() {}
 
-    //@ColumnInfo
-    //@PrimaryKey(autoGenerate = true)
+    @Ignore
+    public User user;
+
+    @ColumnInfo
+    @PrimaryKey
     public long id;
 
-    //@ColumnInfo
+    @ColumnInfo
     public String body;
-    //@ColumnInfo
+    @ColumnInfo
     public String createdAt;
-    //@ColumnInfo
+    @ColumnInfo
     public String previewUrl;
-
-
-    //@ColumnInfo
+    @ColumnInfo
     public String screenName;
 
-    public String imageType;
-
-
+    @ColumnInfo
+    public long userId;
 
     public static final String TAG = "Tweet.java";
 
@@ -51,11 +50,9 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
-
-
-        //tweet.imageType = jsonObject.getString("type");
-        //tweet.previewUrl = jsonObject.getString("preview_image_url");
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
+        tweet.userId = user.id;
         if (jsonObject.has("extended_entities")) {
             tweet.previewUrl = jsonObject.getJSONObject("extended_entities").getJSONArray("media").getJSONObject(0).getString("media_url_https");
             Log.d(TAG, "fromJson: " + tweet.previewUrl);
