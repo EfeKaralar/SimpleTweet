@@ -40,7 +40,15 @@ android {
     }
 }
 
+ext {
+    roomVersion = "2.1.0"
+}
+
 dependencies {
+    // Room for simple persistence with an ORM
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation 'com.codepath.libraries:android-oauth-handler:2.2.0'
     implementation 'commons-codec:commons-codec:1.10'
@@ -57,4 +65,11 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
